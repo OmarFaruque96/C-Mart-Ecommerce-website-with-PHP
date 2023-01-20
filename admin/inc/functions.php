@@ -47,4 +47,58 @@ function Show_Sub_Category($cat_id){
 }
 
 
-// find parent category name
+// all category
+// function all_categories(){
+//     global $db;
+
+//     $ids = array();
+
+//     $category_sql = "SELECT * FROM mart_category WHERE c_status = '1'";
+//     $category_res = mysqli_query($db,$category_sql);
+//     while($row = mysqli_fetch_assoc($category_res)){
+//         array_push($ids,$row['ID']);
+//     }
+//     return $ids;
+
+// }
+
+
+// check image
+function is_img($file_name){
+    global $db;
+
+    $splitedArray = explode('.', $file_name);
+    $extn = strtolower(end($splitedArray));
+
+    $extentions = array('png', 'jpg', 'jpeg');
+
+    if(in_array($extn, $extentions) === true){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+// delete record
+function delete($table,$key,$delid,$redirect){
+    global $db;
+
+    $del_reply = mysqli_query($db,"DELETE FROM $table WHERE $key='$delid'");
+    if($del_reply){
+        header('location: '.$redirect);
+    }else{
+        die('Category Delete Error!'.mysqli_error($db));
+    }
+}
+
+// delete file
+function delete_file($file_name,$table,$key,$file_id,$path){
+    global $db;
+
+    $file_name_res = mysqli_query($db,"SELECT $file_name FROM $table WHERE $key = '$file_id'");
+    $row = mysqli_fetch_assoc($file_name_res);
+    $f_name = $row[$file_name];
+
+    unlink($path.$f_name);
+}

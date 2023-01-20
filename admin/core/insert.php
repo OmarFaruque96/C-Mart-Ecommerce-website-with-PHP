@@ -1,5 +1,7 @@
 <?php 
 include '../inc/connection.php';
+include '../inc/functions.php';
+
 // category insert 
 if(isset($_POST['add_category'])){
     $name = $_POST['cat_name'];
@@ -36,4 +38,38 @@ if(isset($_POST['add_category'])){
                 die('Category insert error!'.mysqli_error($db));
             }
         }
+}
+
+
+
+// brand insert
+if(isset($_POST['add_brand'])){
+    $brand_name = $_POST['brand_name'];
+    $file_name  = $_FILES['choose-file']['name'];
+    $tmp_name   = $_FILES['choose-file']['tmp_name'];
+
+    if(!empty($file_name)){
+        $file = is_img($file_name);
+
+        if($file){
+            $updatedname = rand().$file_name;
+            move_uploaded_file($tmp_name, '../assets/img/products/brand/'.$updatedname);
+        }else{
+            echo 'not an image';
+        }
+    }else{
+        $updatedname = '';
+    }
+
+    $brandInsertSql = "INSERT INTO mart_brand (b_name, b_logo, b_status) VALUES ('$brand_name', '$updatedname', '1')";
+    $brandInsertSqlResult = mysqli_query($db, $brandInsertSql);
+    if($brandInsertSqlResult){
+        header('location: ../brand.php');
+    }else{
+        die('Brand insert error!'.mysqli_error($db));
+    }
+
+    
+    
+
 }

@@ -44,17 +44,17 @@
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="brand.php">
               <i class="bi bi-circle"></i><span>Brand</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="products.php?data=add">
               <i class="bi bi-circle"></i><span>Add New Product</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="products.php?data=view">
               <i class="bi bi-circle"></i><span>View All Products</span>
             </a>
           </li>
