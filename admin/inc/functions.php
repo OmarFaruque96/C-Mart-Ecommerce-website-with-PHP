@@ -102,3 +102,15 @@ function delete_file($file_name,$table,$key,$file_id,$path){
 
     unlink($path.$f_name);
 }
+
+
+// find values based on their id
+
+function findval($field,$table,$key,$fkey){
+    global $db;
+
+    $catName = mysqli_query($db,"SELECT $field FROM $table WHERE $key='$fkey'");
+    $row = mysqli_fetch_assoc($catName);
+    $file_name = $row[$field];
+    return $file_name;
+}

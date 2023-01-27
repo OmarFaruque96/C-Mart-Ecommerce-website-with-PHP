@@ -21,7 +21,7 @@
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="couponcode.php">
               <i class="bi bi-circle"></i><span>Coupon Code</span>
             </a>
           </li>
