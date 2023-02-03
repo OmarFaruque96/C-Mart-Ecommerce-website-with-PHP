@@ -128,3 +128,71 @@ if(isset($_POST['add_product'])){
     }
 
 }
+
+
+// insert coupon code 
+if(isset($_POST['add_coupon'])){
+    $coupon_code    = $_POST['coupon_code'];
+    $amount         = $_POST['amount'];
+    $discount_type  = $_POST['discount_type'];
+    $starting_date  = $_POST['starting_date'];
+    $expire_date    = $_POST['expire_date'];
+    $dis_on_type    = $_POST['dis_on_type'];
+    $discounton     = $_POST['discounton'];
+
+    $id_array = '';
+
+    foreach ($discounton as $data) {
+        $data = ','.$data;
+        $id_array .= $data;
+    }
+
+    $coupon_sql = "INSERT INTO mart_coupon(coupon,amount,dis_type,starting_date,expire_date,dis_on_type,discount_on) VALUES ('$coupon_code','$amount','$discount_type','$starting_date','$expire_date','$dis_on_type','$id_array')";
+    $coupon_res = mysqli_query($db,$coupon_sql);
+
+    if($coupon_res){
+        header('location: ../couponcode.php');
+    }else{
+        die('Coupon insert error!'.mysqli_error($db));
+    }
+
+
+}
+
+
+// user insert code
+if(isset($_POST['add_user'])){
+
+   $name  =  $_POST['user-name'];
+   $email  =  $_POST['user-email'];
+   $pass  =  $_POST['password'];
+   $phone  =  $_POST['phone'];
+   $address  =  $_POST['address'];
+   $file_name  =  $_FILES['choose-file']['name'];
+   $tmp_name  =  $_FILES['choose-file']['tmp_name'];
+
+   if(!empty($file_name)){
+        $file = is_img($file_name);
+
+        if($file){
+            $updatedname = rand().$file_name;
+            move_uploaded_file($tmp_name, '../assets/img/users/'.$updatedname);
+        }else{
+            echo 'not an image';
+        }
+   }else{
+            $updatedname = '';
+   }
+
+   $encrypted = sha1($pass);
+
+   $insertusersql = "INSERT INTO mart_users (firstname,lastname,username,email,pass,address,photo,phone,status) VALUES ('','','$name','$email','$encrypted','$address','$updatedname','$phone','1')";
+
+   $insertuserres = mysqli_query($db,$insertusersql);
+
+    if($insertuserres){
+        header('location: ../users.php');
+    }else{
+        die('User insert error!'.mysqli_error($db));
+    }
+}

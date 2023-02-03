@@ -70,7 +70,7 @@
                           $p_reg_price    = $row['p_reg_price'];
                           $p_offer_price  = $row['p_offer_price'];
                           $p_featured_img = $row['p_featured_img'];
-                          $p_image_gallery = $row['p_image_gallery'];
+                          $p_image_gallery= $row['p_image_gallery'];
                           $p_quantity     = $row['p_quantity'];
                           $p_status       = $row['p_status'];
                           $p_category     = $row['p_category'];
