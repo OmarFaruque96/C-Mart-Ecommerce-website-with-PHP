@@ -114,3 +114,15 @@ function findval($field,$table,$key,$fkey){
     $file_name = $row[$field];
     return $file_name;
 }
+
+
+// check if its an admin or not
+function is_admin($userrole){
+    global $db;
+
+    if($userrole == 3){
+        return true;
+    }else{
+        return false;
+    }
+}
