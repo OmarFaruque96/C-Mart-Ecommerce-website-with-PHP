@@ -126,3 +126,13 @@ function is_admin($userrole){
         return false;
     }
 }
+
+
+function OfferPercentage($regularPrice, $offerPrice){
+
+    global $db;
+
+    $off = 100-($offerPrice/$regularPrice)*100;
+
+    return $off;
+}
