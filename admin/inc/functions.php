@@ -134,5 +134,74 @@ function OfferPercentage($regularPrice, $offerPrice){
 
     $off = 100-($offerPrice/$regularPrice)*100;
 
-    return $off;
+    return round($off,2);
+}
+
+
+function total_product(){
+
+    global $db;
+
+    $prd = mysqli_query($db,"SELECT * FROM mart_products WHERE p_status = '1'");
+    $total = mysqli_num_rows($prd);
+
+    return $total;
+
+}
+
+
+function show_cart_product($id,$quantity){
+    global $db;
+
+    $products = mysqli_query($db,"SELECT * FROM mart_products WHERE ID='$id'");
+    while($row = mysqli_fetch_assoc($products)){
+          $p_name         = $row['p_name'];
+          $p_reg_price    = $row['p_reg_price'];
+          $p_offer_price  = $row['p_offer_price'];
+          $p_featured_img = $row['p_featured_img'];
+          $stock          = $row['p_quantity'];
+          $p_category     = $row['p_category'];
+          ?>
+
+            <tr>
+                <td class="shoping__cart__item">
+                    <img src="./admin/assets/img/products/<?php echo $p_featured_img;?>" width="80" alt="">
+                    <h5><?php echo $p_name;?></h5>
+                </td>
+                <td class="shoping__cart__price">
+                    <?php 
+
+                    if(empty($p_offer_price)){
+                        echo $p_reg_price;
+                      }else{
+                        echo '<span style="text-decoration:line-through">'.$p_reg_price.'</span>'.$p_offer_price;
+                      }
+
+                    ?>
+                </td>
+                <td class="shoping__cart__quantity">
+                    <div class="quantity">
+                        <div class="pro-qty">
+                            <input type="text" value="<?php echo $quantity;?>">
+                        </div>
+                    </div>
+                </td>
+                <td class="shoping__cart__total">
+                    <?php 
+
+                    if(empty($p_offer_price)){
+                        echo '<span id="total">'.$p_reg_price*$quantity.'</span>';
+                      }else{
+                        echo '<span id="total">'.$p_offer_price*$quantity.'</span>';
+                      }
+
+                    ?>
+                </td>
+                <td class="shoping__cart__item__close">
+                    <a href="inc/add_to_cart.php?product_id=<?php echo $id;?>&&action=delete&&quantity=<?php echo $quantity;?>"><span class="icon_close"></span></a>
+                </td>
+            </tr>
+
+          <?php
+      }
 }
