@@ -205,3 +205,61 @@ function show_cart_product($id,$quantity){
           <?php
       }
 }
+
+
+
+function subtotal($id,$quantity){
+    global $db;
+
+    $subtotal = 0;
+
+    $products = mysqli_query($db,"SELECT * FROM mart_products WHERE ID='$id'");
+    while($row = mysqli_fetch_assoc($products)){
+          $p_reg_price    = $row['p_reg_price'];
+          $p_offer_price  = $row['p_offer_price'];
+
+          if($p_offer_price > 0){
+            $price = $p_offer_price;
+          }else{
+            $price = $p_reg_price;
+          }
+
+          $subtotal = $price*$quantity;
+    }
+
+    return $subtotal;
+}
+
+
+function show_checkout_product($id,$quantity){
+    global $db;
+
+    $products = mysqli_query($db,"SELECT * FROM mart_products WHERE ID='$id'");
+    while($row = mysqli_fetch_assoc($products)){
+          $p_name         = $row['p_name'];
+          $p_reg_price    = $row['p_reg_price'];
+          $p_offer_price  = $row['p_offer_price'];
+          $p_featured_img = $row['p_featured_img'];
+          $stock          = $row['p_quantity'];
+          $p_category     = $row['p_category'];
+          ?>
+
+          <li><?php echo $p_name;?><span>
+              <?php 
+
+                    if(empty($p_offer_price)){
+                        echo '<span id="total">'.$p_reg_price*$quantity.'</span>';
+                      }else{
+                        echo '<span id="total">'.$p_offer_price*$quantity.'</span>';
+                      }
+
+                    ?>
+          </span></li>
+            
+                    
+                    
+              
+          <?php
+      }
+}
+

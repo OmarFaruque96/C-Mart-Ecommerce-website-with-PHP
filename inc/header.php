@@ -31,9 +31,9 @@ ob_start();
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -159,7 +159,23 @@ ob_start();
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="./cart.php"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="./cart.php"><i class="fa fa-shopping-bag"></i> <span>
+                                <?php 
+
+                                if(!empty($_SESSION['cart'])){
+
+                                    $count = 0;
+                                
+                                    foreach($_SESSION["cart"] as $keys => $values)
+                                    {
+                                        $count++;
+                                    }
+
+                                    echo $count;
+                                }
+
+                                ?>
+                            </span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
