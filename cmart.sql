@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2023 at 12:53 PM
+-- Generation Time: Mar 17, 2023 at 11:59 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -96,6 +96,47 @@ INSERT INTO `mart_coupon` (`ID`, `coupon`, `amount`, `dis_type`, `starting_date`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mart_orders`
+--
+
+CREATE TABLE `mart_orders` (
+  `ID` int(11) NOT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
+  `country` varchar(20) DEFAULT NULL,
+  `state` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  `postCode` int(10) DEFAULT NULL,
+  `additional_info` varchar(255) DEFAULT NULL,
+  `payment_method` int(11) DEFAULT NULL COMMENT '0 for cash on and 1 for bkash',
+  `total_amount` int(11) DEFAULT NULL,
+  `payment_status` int(11) DEFAULT NULL COMMENT '1 for success and 0 for fail',
+  `order_status` int(11) DEFAULT NULL COMMENT '1 for pending 2 for processing and 3 for delivery',
+  `products` varchar(255) DEFAULT NULL,
+  `order_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mart_orders`
+--
+
+INSERT INTO `mart_orders` (`ID`, `user_email`, `phone`, `country`, `state`, `address`, `city`, `postCode`, `additional_info`, `payment_method`, `total_amount`, `payment_status`, `order_status`, `products`, `order_date`) VALUES
+(1, 'prince@gmail.com', '01737429077', 'Bangladesh', 'Mirpur', '171, Bagbari Mirpur1', 'Dhaka', 1216, '', 0, 24, 0, 3, '26,27,', '03/03/2023'),
+(2, 'umarfaruque.tipu@gmail.com', '01773357272', 'bangladesh', 'dhaka', 'mirput', 'mirpiur', 1216, '', 0, 12, 0, 1, '26,', ''),
+(3, 'prince@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 50, 0, 1, '28,32,', '2023-03-10 16:56:00'),
+(4, 'umarfaruque.tipu@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 144, 0, 1, '26,27,', '2023-03-17 16:11:38'),
+(5, 'umarfaruque.tipu@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 144, 0, 1, '26,27,', '2023-03-17 16:12:08'),
+(6, 'umarfaruque.tipu@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 144, 0, 1, '26,27,', '2023-03-17 16:12:44'),
+(7, 'omar@shikhbeshobai.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 144, 0, 1, '26,27,', '2023-03-17 16:14:20'),
+(8, 'umarfaruque.tipu@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 144, 0, 1, '26,27,', '2023-03-17 16:20:15'),
+(9, 'umarfaruque.tipu@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 174, 0, 1, '26,27,28,', '2023-03-17 16:25:25'),
+(10, 'umarfaruque.tipu@gmail.com', '0177357272', 'Bangladesh', 'Mirpur', 'Dhaka', 'Dhaka', 1216, '', 0, 174, 0, 1, '26,27,28,', '2023-03-17 16:27:28'),
+(11, 'omar@shikhbeshobai.com', '0177357272', 'Bangladesh', 'Mirpur11', 'Dhaka', 'Dhaka', 1216, '', 0, 174, 0, 1, '26,27,28,', '2023-03-17 16:31:44');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mart_products`
 --
 
@@ -127,7 +168,13 @@ INSERT INTO `mart_products` (`ID`, `p_name`, `p_short_desc`, `p_big_desc`, `p_re
 (30, 'Spicy Beef Burger Blast', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.\r\nMauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 12, 0, '1753324364product-5.jpg', '', 8, 1, 4, 1),
 (31, 'Mango ', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.\r\nMauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 14, 0, '1255063752product-6.jpg', '', 6, 1, 17, 1),
 (32, 'Fruits Juice', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.\r\nMauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 20, 0, '779935439product-11.jpg', '', 30, 1, 16, 1),
-(33, 'Chicken fries', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.\r\nMauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 30, 0, '748185623product-10.jpg', '', 10, 1, 4, 1);
+(33, 'Chicken fries', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.\r\nMauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.', 30, 0, '748185623product-10.jpg', '', 10, 1, 4, 1),
+(34, 'Chicken Lolipop', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 40, 35, '1935463279product-10.jpg', '', 6, 1, 4, 2),
+(35, 'King Burgur', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 100, 0, '746444524images.png', '', 7, 1, 4, 6),
+(36, 'Pizza', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 90, 0, '1906280683pizza.png', '', 0, 1, 4, 1),
+(37, 'Hotdog', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 80, 0, '148734883download.png', '', 9, 1, 4, 1),
+(38, 'Mini-Burger', 'Mini Burgur is good orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 'Mini Burorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 50, 0, '352220918mini.png', '', 9, 1, 4, 2),
+(39, 'Lacchi', 'Lacchi orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 'Lacchi orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets ', 30, 25, '296640068lacchi.png', '', 8, 1, 16, 6);
 
 -- --------------------------------------------------------
 
@@ -154,7 +201,7 @@ CREATE TABLE `mart_users` (
 --
 
 INSERT INTO `mart_users` (`ID`, `firstname`, `lastname`, `username`, `email`, `pass`, `address`, `photo`, `phone`, `userrole`, `status`) VALUES
-(2, '', '', 'Prince Mahmud', 'prince@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '                                            Dhaka, Bangladesh                                        ', '1411584120ebong himu by Humayun Ahmed.jpg', '1773357272', 2, 0),
+(2, '', '', 'Prince Mahmud', 'prince@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '                                            Dhaka, Bangladesh                                        ', '1411584120ebong himu by Humayun Ahmed.jpg', '1773357272', 1, 1),
 (3, NULL, NULL, 'admin', 'admin@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', NULL, NULL, '1773357272', 3, 1),
 (4, NULL, NULL, 'hafiz', 'hafiz@gmail.com', '672672', NULL, NULL, NULL, 2, 1);
 
@@ -181,6 +228,12 @@ ALTER TABLE `mart_category`
 ALTER TABLE `mart_coupon`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `coupon` (`coupon`);
+
+--
+-- Indexes for table `mart_orders`
+--
+ALTER TABLE `mart_orders`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `mart_products`
@@ -221,10 +274,16 @@ ALTER TABLE `mart_coupon`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `mart_orders`
+--
+ALTER TABLE `mart_orders`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `mart_products`
 --
 ALTER TABLE `mart_products`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `mart_users`
