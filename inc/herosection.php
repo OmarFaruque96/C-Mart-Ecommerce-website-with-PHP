@@ -19,7 +19,7 @@
                                 $cat_name   = $row['c_name'];
                                 $cat_image = $row['c_image'];
                                 $cat_parent = $row['is_parent'];
-                                echo '<li><a href="#">'.$cat_name.'</a></li>';
+                                echo '<li><a href="category.php?id='.$cat_id.'">'.$cat_name.'</a></li>';
                             }
 
                             ?>
@@ -29,13 +29,13 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="search.php" method="POST">
                                 <a class="hero__search__categories" href="./shop.php">
                                     All Products
                                     <span class="arrow_carrot-right"></span>
                                 </a>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" name="search" placeholder="What do yo u need?">
+                                <button type="submit" name="searchbtn" class="site-btn">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">

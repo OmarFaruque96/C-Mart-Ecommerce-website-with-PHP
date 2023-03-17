@@ -155,6 +155,7 @@ function show_cart_product($id,$quantity){
 
     $products = mysqli_query($db,"SELECT * FROM mart_products WHERE ID='$id'");
     while($row = mysqli_fetch_assoc($products)){
+          $p_id         = $row['ID'];
           $p_name         = $row['p_name'];
           $p_reg_price    = $row['p_reg_price'];
           $p_offer_price  = $row['p_offer_price'];
@@ -181,9 +182,22 @@ function show_cart_product($id,$quantity){
                 </td>
                 <td class="shoping__cart__quantity">
                     <div class="quantity">
-                        <div class="pro-qty">
-                            <input type="text" value="<?php echo $quantity;?>">
+                        <div class="">
+                            
+                            <input type="number" id="cart_quantity" name="<?php echo $p_id;?>" onchange="window.location.href = 'inc/add_to_cart.php?product_id='+this.name+'&&quantity='+this.value" value="<?php echo $quantity;?>">
                         </div>
+
+                        <script>
+                            
+                            // function update_cart(){
+                            //   var p_id = document.getElementById('p_id').value;
+                            //   var quantity = document.getElementById('cart_quantity').value;
+
+
+                            //   window.location.href = "inc/add_to_cart.php?product_id="+p_id+"&&quantity="+quantity;
+                            // }
+                        </script>
+
                     </div>
                 </td>
                 <td class="shoping__cart__total">

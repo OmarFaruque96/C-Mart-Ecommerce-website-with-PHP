@@ -5,6 +5,7 @@
     
     if(!empty($_SESSION['email'])){
         $is_guest = true;
+        $usermail = $_SESSION['email'];
     }else{
         $is_guest = false;
     }
@@ -72,7 +73,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text" name="email" required>
+                                        <input type="text" name="email" value="<?php if(!empty($_SESSION['email']))echo $usermail;?>" required>
                                     </div>
                                 </div>
                             </div>

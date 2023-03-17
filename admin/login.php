@@ -7,7 +7,7 @@ if(!empty($_SESSION['email']) && ($_SESSION['userrole'] == 3 || $_SESSION['userr
   header('location: dashboard.php');
 }
 if(!empty($_SESSION['email']) && $_SESSION['userrole'] == 1){
-  header('location: userdashboard.php');
+  header('location: ../userdashboard/dashboard.php');
 }
 
 ?>

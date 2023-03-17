@@ -27,6 +27,7 @@ ob_start();
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
 </head>
 
 <body>
@@ -116,15 +117,31 @@ ob_start();
                             </div>
                             <div class="header__top__right__language">
                                 <img src="img/language.png" alt="">
-                                <div>English</div>
+                                <div>
+                                    <?php 
+
+                                if(empty($_SESSION['email'])){
+                                    ?>
+                                    
+                                    <a href="admin/login.php"><i class="fa fa-user"></i> Login</a>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <a href="userdashboard/dashboard.php"><i class="fa fa-user"></i> My Account</a>
+                                    <?php
+                                }
+                                ?>
+                                </div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a href="admin/login.php"><i class="fa fa-user"></i> Dashboard</a></li>
+                                    <li><a href="admin/inc/logout.php">Logout</a></li>
+
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -158,7 +175,7 @@ ob_start();
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> -->
                             <li><a href="./cart.php"><i class="fa fa-shopping-bag"></i> <span>
                                 <?php 
 
@@ -177,7 +194,13 @@ ob_start();
                                 ?>
                             </span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">item: <span>$
+                            <?php 
+                            if(!empty($_SESSION['total_price']))
+                            echo $_SESSION['total_price'];
+                        else 
+                            echo '0';
+                        ?></span></div>
                     </div>
                 </div>
             </div>

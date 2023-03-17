@@ -19,7 +19,8 @@ if(isset($_POST['login'])){
         		header('location: ../dashboard.php');
         	}
         	else if($_SESSION['userrole'] == 1){
-        		header('location: ../userdashboard.php');
+                echo 'customer';
+        		header('location: ../../userdashboard/dashboard.php');
         	}
         	else {
         		header("location: ../login.php?error=Subscribers doesn't have any dashboard!");
